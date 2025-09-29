@@ -32,26 +32,26 @@ const stringCalc = (inputString = "") => {
     return result
 }
 
-console.log(stringCalc(""))
+console.log(stringCalc("")) // 0
 
-console.log(stringCalc("1"))
+console.log(stringCalc("1")) // 1
 
-console.log(stringCalc("1,5"))
+console.log(stringCalc("1,5"))  // 6
 
-console.log(stringCalc("1\n2,3"))
+console.log(stringCalc("1\n2,3")) // 6
 
-console.log(stringCalc("//;\n1;2"))
+console.log(stringCalc("//;\n1;2")) // 3
 
 try {
-    console.log(stringCalc("1,2,-3"))
+    console.log(stringCalc("1,2,-3")) // Error: negative numbers not allowed -3
 } catch(e) {
     console.error(e)
 }
 
 try {
-    console.log(stringCalc("1,2,-3,-4"))
+    console.log(stringCalc("1,2,-3,-4")) // Error: negative numbers not allowed -3,-4
 } catch(e) {
     console.error(e)
 }
 
-console.log(stringCalc("//;\n2;1001"))
+console.log(stringCalc("//;\n2;1001")) // 2
