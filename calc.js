@@ -11,10 +11,23 @@ const stringCalc = (inputString = "") => {
 
     const nums = inputString.split(RegExp(delimiter));
     result = 0;
-    
-    nums.forEach(num => {
-        result += parseInt(num);
-    });
+    let negatives = [];
+    // nums.forEach(num => {
+
+    //     result += ;
+    // });
+    for(const num of nums) {
+        let parsedNum = parseInt(num)
+        if (parsedNum < 0) {
+            negatives.push(parsedNum);
+            continue;
+        }
+        result += parsedNum;
+    }
+
+    if (negatives.length) {
+        throw Error(`negative numbers not allowed ${negatives}`);
+    }
     
     return result
 }
@@ -24,3 +37,13 @@ console.log(stringCalc("1"))
 console.log(stringCalc("1,5"))
 console.log(stringCalc("1\n2,3"))
 console.log(stringCalc("//;\n1;2"))
+try {
+    console.log(stringCalc("1,2,-3"))
+} catch(e) {
+    console.error(e)
+}
+try {
+    console.log(stringCalc("1,2,-3,-4"))
+} catch(e) {
+    console.error(e)
+}
