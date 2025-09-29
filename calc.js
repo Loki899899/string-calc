@@ -1,3 +1,5 @@
+const ALLOWED_MAX = 1000
+
 const stringCalc = (inputString = "") => {
     if (!inputString) return 0;
 
@@ -12,17 +14,15 @@ const stringCalc = (inputString = "") => {
     const nums = inputString.split(RegExp(delimiter));
     result = 0;
     let negatives = [];
-    // nums.forEach(num => {
-
-    //     result += ;
-    // });
     for(const num of nums) {
         let parsedNum = parseInt(num)
         if (parsedNum < 0) {
             negatives.push(parsedNum);
             continue;
         }
-        result += parsedNum;
+        if (parsedNum <= ALLOWED_MAX) {
+            result += parsedNum;
+        }
     }
 
     if (negatives.length) {
@@ -33,17 +33,25 @@ const stringCalc = (inputString = "") => {
 }
 
 console.log(stringCalc(""))
+
 console.log(stringCalc("1"))
+
 console.log(stringCalc("1,5"))
+
 console.log(stringCalc("1\n2,3"))
+
 console.log(stringCalc("//;\n1;2"))
+
 try {
     console.log(stringCalc("1,2,-3"))
 } catch(e) {
     console.error(e)
 }
+
 try {
     console.log(stringCalc("1,2,-3,-4"))
 } catch(e) {
     console.error(e)
 }
+
+console.log(stringCalc("//;\n2;1001"))
