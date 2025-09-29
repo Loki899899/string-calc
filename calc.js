@@ -1,7 +1,7 @@
 const stringCalc = (inputString) => {
     if (!inputString) return 0;
 
-    const nums = inputString.split(",");
+    const nums = inputString.split(/\n|,/);
     result = 0;
     
     nums.forEach(num => {
@@ -14,3 +14,4 @@ const stringCalc = (inputString) => {
 console.log(stringCalc(""))
 console.log(stringCalc("1"))
 console.log(stringCalc("1,5"))
+console.log(stringCalc("1\n2,3"))
